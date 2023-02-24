@@ -16,6 +16,10 @@
  */
 
 let balance = 10000;
-const payment = 2000;
+const payment = 15000;
 
+console.log(`Общая стоимость заказа ${payment} кредитов. Проверяем кол-во доступных средств на счету`);
+const purchase = payment <= balance ? `На счету осталось ${balance - payment} кредитов` : 'На счету недостаточно средств для проведения операции!';
+console.log(purchase);
+console.log('Операция завершена');
 // 'Все хорошо, снимаем деньги... Спасибо за покупку!'

@@ -14,9 +14,24 @@
  * «Оформляем заказ на сумму [сумма] со скидкой [скидка]%»
  */
 
-const totalSpent = 2000;
-let payment = 500;
+const totalSpent = 5000;
+let payment = 20;
 let discount = 0;
+
+if (totalSpent >= 100 && totalSpent < 1000) {
+  discount = 2;
+  console.log('Бронзовый партнер, скидка 2%');
+} else if (totalSpent >= 1000 && totalSpent < 5000) {
+  discount = 5;
+  console.log('Серебрянный партнер, скидка 5%');
+} else if (totalSpent >= 5000) {
+  discount = 10;
+  console.log('Золотой партнер, скидка 10%');
+} else {
+  console.log('У вас еще нет партнерской скидки');
+}
+  
+console.log(`Оформляем заказ на сумму ${payment} со скидкой ${discount}%`)
 
 // 'Бронзовый партнер, скидка 2%'
 // 'Серебрянный партнер, скидка 5%'
