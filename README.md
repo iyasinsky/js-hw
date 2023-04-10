@@ -1,1 +1,1 @@
-Homework workspace
+Модуль 3. Об'єкти & операції rest та spread
