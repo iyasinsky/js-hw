@@ -14,6 +14,8 @@ const ingredients = [
 
 const listEL = document.getElementById('ingredients');
 
+murkup(ingredients);
+
 function murkup(arr) {
   const elements = arr.map(ingredient => {
     const listItemEl = document.createElement('li');
@@ -24,4 +26,3 @@ function murkup(arr) {
 
   return listEL.append(...elements);
 }
-murkup(ingredients);

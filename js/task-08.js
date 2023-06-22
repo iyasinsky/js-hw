@@ -29,7 +29,12 @@ function handleSubmit(event) {
     password: password.value,
   };
 
-  console.log(formData);
-
   loginForm.reset();
+
+  // const formData = new FormData(event.currentTarget);
+
+  // formData.forEach((name, value) => {
+  //   console.log('name:', name);
+  //   console.log('value:', value);
+  // });
 }

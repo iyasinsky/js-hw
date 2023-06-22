@@ -12,6 +12,9 @@ const input = document.querySelector('input');
 createButton.addEventListener('click', () => {
   createBoxes(input.valueAsNumber);
 });
+
+destroyButton.addEventListener('click', destroyBoxes);
+
 function createBoxes(amount) {
   if (amount < input.min || amount > input.max || isNaN(amount)) {
     alert('Введіть число від 1 до 100.');
@@ -37,7 +40,6 @@ function createBoxes(amount) {
   input.value = '';
 }
 
-destroyButton.addEventListener('click', destroyBoxes);
 function destroyBoxes() {
   boxesContainer.innerHTML = '';
 }
