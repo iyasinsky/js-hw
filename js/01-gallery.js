@@ -8,6 +8,8 @@ createGalleryItems(galleryItems);
 
 listEl.addEventListener('click', onClick);
 
+let instance;
+
 function onClick(evt) {
   evt.preventDefault();
 
@@ -17,17 +19,24 @@ function onClick(evt) {
 
   const originalImg = evt.target.dataset.source;
 
-  const instance = basicLightbox.create(`<img src="${originalImg}" >`);
-  instance.show();
-
-  document.addEventListener('keydown', evt => handleKeyDown(evt, instance));
+  createModal(originalImg);
 }
 
-function handleKeyDown(evt, instance) {
+function createModal(path) {
+  instance = basicLightbox.create(`<img src="${path}" >`, {
+    onShow: () => {
+      document.addEventListener('keydown', handleKeyDown);
+    },
+    onClose: () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    },
+  });
+  instance.show();
+}
+
+function handleKeyDown(evt) {
   if (evt.code === 'Escape' && instance.visible()) {
-    console.log('The Escape key was pressed');
     instance.close();
-    document.removeEventListener('keydown', handleKeyDown);
   }
 }
 
@@ -49,6 +58,5 @@ function markupGalleryItem({ preview, original, description }) {
 function createGalleryItems(arr) {
   const galleryElements = arr.map(markupGalleryItem).join('');
 
-  // // елемент в який буду рендерити пустий, тому використовую innerHTML замість insertAdjacentHTML
   listEl.innerHTML = galleryElements;
 }
